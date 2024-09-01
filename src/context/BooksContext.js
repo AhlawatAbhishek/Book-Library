@@ -5,7 +5,10 @@ export const BooksContext = createContext();
 export const BooksProvider = ({ children }) => {
   const [books, setBooks] = useState([]);
   useEffect(() => {
-    //TODO: set books
+    fetch("/books.json")
+      .then((response) => response.json())
+      .then((data) => setBooks(data))
+      .catch((error) => console.error(error));
   }, []);
   return (
     <BooksContext.Provider value={{ books, setBooks }}>
