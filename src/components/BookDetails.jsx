@@ -8,11 +8,17 @@ export default function BookDetails() {
   useEffect(() => {
     console.log(book);
   });
-
+  if (books.length === 0) {
+    return <div>Loading...</div>;
+  }
+  if (book == null) {
+    return <div>Book not found</div>;
+  }
   return (
     <div>
-      <h1>Book Details</h1>
-      <p>Book ID: {bookId}</p>
+      <h1>{book.title}</h1>
+      <h2>by {book.author}</h2>
+      <p>{book.description}</p>
     </div>
   );
 }
